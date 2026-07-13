@@ -1,0 +1,29 @@
+import express from "express";
+import sequelize from "./config/db.js";
+import User from "./models/user.model.js";
+import Todo from "./models/todo.model.js";
+import Image from "./models/image.model.js";
+import authRoutes from "./routes/auth.routes.js";
+
+
+const app = express();
+
+app.use(express.json());
+app.use("/api/auth", authRoutes);
+
+
+
+try {
+  await sequelize.authenticate();
+  console.log("Database connected successfully!");
+
+  await sequelize.sync();
+  console.log("Tables synchronized successfully!");
+} catch (error) {
+  console.log("Database connection failed!");
+  console.error(error);
+}
+
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port ${process.env.PORT}`);
+});
