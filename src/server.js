@@ -17,7 +17,7 @@ try {
   await sequelize.authenticate();
   console.log("Database connected successfully!");
 
-  await sequelize.sync();
+  await sequelize.sync({ alter: true });
   console.log("Tables synchronized successfully!");
 } catch (error) {
   console.log("Database connection failed!");
