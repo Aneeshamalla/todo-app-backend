@@ -24,11 +24,18 @@ const Todo = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+
+    userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+},
   },
   {
     tableName: "todos",
     timestamps: true,
   }
 );
+
+
 
 export default Todo;
