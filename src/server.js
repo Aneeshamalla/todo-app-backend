@@ -1,4 +1,4 @@
-import exprss from "express";
+import express from "express";
 import sequelize from "./config/db.js";
 import User from "./models/user.model.js";
 import Todo from "./models/todo.model.js";
