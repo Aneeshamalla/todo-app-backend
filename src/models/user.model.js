@@ -1,60 +1,60 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../config/db.js";  //import connected db
+  import { DataTypes } from "sequelize";
+  import sequelize from "../config/db.js";  //import connected db
 
-const User = sequelize.define(   //defines user table in db
-  "User",
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
+  const User = sequelize.define(   //defines user table in db
+    "User",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
 
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
 
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
 
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
 
-    role: {
-      type: DataTypes.ENUM("USER", "ADMIN"),
-      defaultValue: "USER",
-    },
+      role: {
+        type: DataTypes.ENUM("USER", "ADMIN"),
+        defaultValue: "USER",
+      },
 
-    profileImage: {
+      profileImage: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+
+      otp: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
+      },
 
-    otp: {
-    type: DataTypes.STRING,
-    allowNull: true,
-    },
+      otpExpiry: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      },
 
-    otpExpiry: {
-    type: DataTypes.DATE,
-    allowNull: true,
+      otpVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      },
     },
+    {
+      tableName: "users",
+      timestamps: true,
+    }
+  );
 
-    otpVerified: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-    },
-  },
-  {
-    tableName: "users",
-    timestamps: true,
-  }
-);
-
-export default User;
+  export default User;
