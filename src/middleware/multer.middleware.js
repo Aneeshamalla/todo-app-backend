@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     },
     
     filename: (req, file, cb) => {
-        cb(null, Date.now() + "-" + file.originalname);
+        cb(null, req.user.id + "-" + Date.now() + "-" + file.originalname);
     },
     
 });   
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
                 fileSize: 2 * 1024 * 1024     //2MB
         },
         fileFilter : function (req, file, cb) {
-            const filetypes = /jpg|jpeg|png/;
+            const filetypes = /jpg|jpeg|png/;   
             const mimetype = filetypes.test(file.mimetype);
             const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
     
