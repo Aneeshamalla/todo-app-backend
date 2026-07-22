@@ -2,6 +2,7 @@ import { profileimageService } from "../services/userProfile.sevices.js";
 import { updateProfileService } from "../services/userProfile.sevices.js";
 import { changePasswordService } from "../services/userProfile.sevices.js";
 
+
 export const profileImage = async(req, res) => {
     try{
         const result = await profileimageService(req.user.id, req.file.filename);
@@ -62,4 +63,5 @@ export const changePassword = async (req, res) => {
     }
 
 }
+
 

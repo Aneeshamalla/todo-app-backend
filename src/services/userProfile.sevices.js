@@ -29,14 +29,16 @@ export const profileimageService = async (userId, filename) => {
 }
 
 export const updateProfileService = async (userId, name) => {
-
     const user = await User.findByPk(userId);
 
     if (!user) {
-    throw new Error("User not Found");
+        const error = new Error("User not found");
+        error.status = 404;
+        throw error;
     }
 
     user.name = name;
+
     await user.save();
 
     return {
@@ -96,3 +98,7 @@ export const changePasswordService = async (userId, oldPassword, newPassword, co
     message: "Password changed successfully."
     };
 }
+
+
+
+

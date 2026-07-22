@@ -52,6 +52,7 @@ export const loginService = async (userData) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        profileImage: user.profileImage,
     },
     };
 }

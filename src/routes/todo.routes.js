@@ -11,6 +11,7 @@ router.post("/", authMiddleware, createTask);
 router.get("/", authMiddleware, readTask);
 router.put("/:id", authMiddleware, updateTask);
 router.delete("/:id", authMiddleware, deleteTask);
+// router.patch("/:id",authMiddleware,)
 
 
 export default router;
