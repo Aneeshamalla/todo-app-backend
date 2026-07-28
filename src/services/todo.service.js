@@ -25,7 +25,7 @@ export const createTaskService = async (taskData, userId) => {
 };
 
 export const readTaskService = async (userId) =>{
-    const tasks = await Todo.findByPk({
+    const tasks = await Todo.findAll({
         where : {
             userId,
         }
@@ -51,9 +51,9 @@ export const updateTaskService = async (id, taskData, userId) => {
         throw error
     }
 
-    task.task = taskData.task;
-    task.description = taskData.description;
-    task.status = taskData.status
+    task.task = taskData.task ?? task.task;
+    task.description = taskData.description ?? task.description;
+    task.completed = taskData.completed ?? task.completed;
 
     await task.save();
 
